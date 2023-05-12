@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+</head>
+
+<body>
+    <h1>Atelier 06</h1>
+    <h2>Gestion de DOM / Gérer la liste des étudiants</h2>
+    <h3>Manipulation 2</h3>
+    <p>
+        Reprendre le page de la première manipulation en utilisant les méthodes de création de nouvel élément html.
+        Voir <a href="https://www.w3schools.com/js/js_htmldom_nodes.asp">html dom nodes</a>
+
+    </p>
+
+
+    <div id="divMessage">
+    </div>
+
+    <form name="formEtudiant">
+        <label>Nom:</label>
+        <input type="text" id="inTextNom" /><br>
+
+        <label>Prenom:</label>
+        <input type="text" id="inTextPrenom" /><br>
+
+        <label>Email:</label>
+        <input type="text" id="inTextEmail" /><br>
+
+        <label>Age:</label>
+        <input type="text" id="inTextAge" /><br>
+
+        <input type="button" value="Ajouter" onclick="if(validerForm()) AjouterNouvelEtudiant()" />
+    </form>
+
+    <h1>Liste des étudiants</h1>
+    <table >
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="tabEtudiants"></tbody>
+    </table>
+
+    <script>
+        function AjouterNouvelEtudiant() {
+
+            let formEtudiant = document.forms["formEtudiant"];
+
+            // Créer une nouvelle ligne <tr>
+            let eleLigne = document.createElement("tr");
+            for (i = 0; i < formEtudiant.length - 1; i++)
+                eleLigne.innerHTML += "<td>" + formEtudiant.[i].value + "</td>";
+
+            // Rechercher l'objet tabeau
+            let tabEtudiants = document.getElementById("tabEtudiants");
+
+            tabEtudiants.appendChild(eleLigne);
+        }
+
+    </script>
+
+
+    <script src="commun.js"></script>
+</body>
+
+</html>

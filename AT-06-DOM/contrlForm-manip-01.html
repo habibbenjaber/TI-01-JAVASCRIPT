@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+</head>
+
+<body>
+    <h1>Atelier 06</h1>
+    <h2>Gestion de DOM / Gérer la liste des étudiants</h2>
+    <h3>Manipulation 1</h3>
+    <p>
+        Ajouter les informations saisies à un tableau sur la même page HTML.
+        Utiliser la propriété innerHTML pour ajouter une nouvelle ligne au tableau
+    </p>
+
+
+
+
+    <div id="divMessage">
+    </div>
+
+    <form name="formEtudiant">
+        <label>Nom:</label>
+        <input type="text" id="inTextNom" /><br>
+
+        <label>Prenom:</label>
+        <input type="text" id="inTextPrenom" /><br>
+
+        <label>Email:</label>
+        <input type="text" id="inTextEmail" /><br>
+
+        <label>Age:</label>
+        <input type="text" id="inTextAge" /><br>
+
+        <input type="button" value="Ajouter" onclick="if(validerForm()) AjouterNouvelEtudiant()" />
+    </form>
+
+    <h1>Liste des étudiants</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="tabEtudiants"></tbody>
+    </table>
+
+    <script>
+        function AjouterNouvelEtudiant() {
+
+            let formEtudiant = document.forms["formEtudiant"];
+
+
+            let htmlLigne = "<tr>";
+
+            for (i = 0; i < formEtudiant.length - 1; i++)
+                htmlLigne += "<td>" + formEtudiant[i].value + "</td>";
+            htmlLigne += "</tr>";
+
+            // Rechercher l'objet tabeau
+            let tabEtudiants = document.getElementById("tabEtudiants");
+            tabEtudiants.innerHTML += htmlLigne;
+        }
+
+    </script>
+    <script src="commun.js"></script>
+</body>
+
+</html>
