@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Atelier 07</h1>
+    <h2>AJAX / Requête asynchrone en utilisant l’objet XMLHttpRequest</h2>
+    <h3>Manipulation 1</h3>
+    <p>
+        Ecrire une page web qui permet après son chargement
+    </p>
+    <ul>
+        <li>Se connecter au serveur web;</li>
+        <li>Récupérer un fichier JSON contenant le dossier d’un seul étudiant (Nom, Prénom, Age, Email) ;</li>
+        <li>Ajouter l’étudiant à un tableau HTML sur la même page web;</li>
+
+    </ul>
+
+    <input type="button" value="Récupérer étudiant" onclick="recupererEtudiant()" />
+
+    <h1>Liste des étudiants</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="tabEtudiants"></tbody>
+    </table>
+
+    <script>
+        // Creer et initialiser l'objet XMLHttpRequest
+        const xhttp = new XMLHttpRequest();
+        // definir la fonction de rappel quand la reponse 
+        // a la requete asynchrone est recue
+        xhttp.onload = function () {
+            // transformer responseText, qui est une chaine au format JSON, en objet JSON
+            const objJSON = JSON.parse(this.responseText);
+            ajouterEtudiant(objJSON);
+        }
+
+        // Rechercher l'objet tabeau
+        let tabEtudiants = document.getElementById("tabEtudiants");
+
+        function recupererEtudiant() {
+            xhttp.open("GET", "etudiant.json");
+            xhttp.send();
+        }
+
+        function ajouterEtudiant(etudiant) {
+            // Créer un nouvel élément <tr>
+            let eleRow = document.createElement("tr");
+            eleRow.innerHTML = "<td>" + etudiant.Nom + "</td><td>" + etudiant.Prenom + "</td><td>" + etudiant.Age + "</td><td>" + etudiant.Email + "</td>"
+            // Definire la classe de la ligne.
+            classeLigne = "ligneImpaire";
+            if (tabEtudiants.lastChild && tabEtudiants.lastChild.className == "ligneImpaire")
+            classeLigne = "lignePaire";
+            eleRow.className = classeLigne;
+            
+            tabEtudiants.appendChild(eleRow);
+
+        }
+    </script>
+</body>
+
+</html>

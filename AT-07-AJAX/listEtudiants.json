@@ -1,0 +1,21 @@
+[
+    {
+        "Nom": "BEN SALEM",
+        "Prenom": "Ahmed",
+        "Age": 19,
+        "Email": "ahmed.salem@gmail.com"
+    },
+    {
+        "Nom": "HOSNI",
+        "Prenom": "Mohsen",
+        "Age": 20,
+        "Email": "ahmmohsen.hosni@gmail.com"
+    },
+    {
+        "Nom": "BEN MOHAMED",
+        "Prenom": "Ali",
+        "Age": 21,
+        "Email": "ali.ben mohamed@gmail.com"
+    }
+
+]
